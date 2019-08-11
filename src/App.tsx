@@ -1,5 +1,5 @@
 import React from 'react';
-import { Staged } from './Staged';
+import { Staged } from './staged/';
 import { articles } from './mocks';
 
 const differentSort = [...articles];
@@ -9,7 +9,7 @@ export const App: React.FC = () => (
     <div className="App">
         <div className="top" />
         <div className="middle">
-            <Staged>
+            <Staged amount={3}>
                 {articles.map((a, i) => (
                     <img
                         src={`https://cdn.pixabay.com/photo${a.cover}`}
@@ -22,7 +22,7 @@ export const App: React.FC = () => (
             </Staged>
         </div>
         <div className="bottom">
-            <Staged>
+            <Staged hideArrows noDrag autoSlide={3000}>
                 {differentSort.map((a, i) => (
                     <img
                         src={`https://cdn.pixabay.com/photo${a.cover}`}
