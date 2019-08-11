@@ -30,7 +30,7 @@
   "scripts": {
     "dist": "rm -rf dist && rollup -c",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "docs": "rm -r docs && react-scripts build && rm build/service-worker.js && mv build docs",
     "test": "react-scripts test"
   },
   "devDependencies": {

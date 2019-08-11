@@ -2,7 +2,7 @@
 
 This is a slider component (carousel, slideshow, you name it).
 It's currently in a very early stage and there will be added
-additional functionalities.
+additional functionalities. Here's the [demo](https://fdc-viktor-luft.github.io/react-staged/).
 
 What's already possible:
 - providing an array of nodes to the `<Staged />` component where
@@ -23,7 +23,6 @@ What's planned:
 - performance optimization (speaking of bundle size and computational costs)
 - `flow` support
 - better README
-- host docs example
 - and a lot more
 
 # Usage
