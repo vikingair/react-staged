@@ -12,6 +12,10 @@
     "type": "git",
     "url": "https://github.com/fdc-viktor-luft/react-staged"
   },
+  "bugs": {
+    "url": "https://github.com/fdc-viktor-luft/react-staged/issues"
+  },
+  "homepage": "https://fdc-viktor-luft.github.io/react-staged/",
   "keywords": [
     "React",
     "TypeScript",
