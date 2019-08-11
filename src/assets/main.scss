@@ -1,0 +1,19 @@
+@import "staged";
+
+body {
+  margin: 0;
+  background-color: #393939;
+}
+
+.App {
+  position: relative;
+
+  .middle {
+    position: relative;
+    width: 100%;
+  }
+
+  .bottom {
+    padding: 4em;
+  }
+}

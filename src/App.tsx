@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Staged } from './Staged';
+import { articles } from './mocks';
 
-const App: React.FC = () => {
-  return (
+const differentSort = [...articles];
+differentSort.sort(() => 0.5 - Math.random());
+
+export const App: React.FC = () => (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className="top" />
+        <div className="middle">
+            <Staged>
+                {articles.map((a, i) => (
+                    <img
+                        src={`https://cdn.pixabay.com/photo${a.cover}`}
+                        alt={a.title}
+                        key={i}
+                        draggable={false}
+                        onClick={() => console.log('image clicked: ' + a.title)}
+                    />
+                ))}
+            </Staged>
+        </div>
+        <div className="bottom">
+            <Staged>
+                {differentSort.map((a, i) => (
+                    <img
+                        src={`https://cdn.pixabay.com/photo${a.cover}`}
+                        alt={a.title}
+                        key={i}
+                        draggable={false}
+                        onClick={() => console.log('image clicked: ' + a.title)}
+                    />
+                ))}
+            </Staged>
+        </div>
     </div>
-  );
-}
-
-export default App;
+);
