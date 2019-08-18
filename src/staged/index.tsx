@@ -1,9 +1,10 @@
-import React, { ReactNode, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
+import React, { ReactNode, useRef } from 'react';
 import { useArrangeAfterResize } from './useArrangeAfterResize';
-import { useDragging } from './useDragging';
 import { usePaging } from './usePaging';
-import { modulo } from './util';
-import { CssVars } from './css-vars';
+import { useInitCssVars } from './css-vars';
+import { StagedDraggable } from './StagedDraggable';
+import { useAutoSlide } from './useAutoSlide';
+import { useSlides } from './useSlides';
 
 type StagedProps = {
     children: ReactNode[];
@@ -17,27 +18,10 @@ export const Staged: React.FC<StagedProps> = ({ children, amount = 1, hideArrows
     const ref = useRef<HTMLDivElement | null>(null);
     const stagedRef = useRef<HTMLDivElement | null>(null);
     useArrangeAfterResize(ref);
+    useInitCssVars(ref, amount);
     const [pos, prev, next] = usePaging(ref, children.length, amount);
-
-    const [onEnter, onMove, onLeave] = useDragging(ref, stagedRef, prev, next);
-
-    useLayoutEffect(() => {
-        CssVars.amount(ref, amount);
-    }, [amount]);
-
-    const amounts = useMemo(() => [...Array(amount * 3)].map((_, i) => i - amount), [amount]);
-    const slides = useMemo(() => amounts.map(i => children[modulo(pos + i, children.length)]), [
-        children,
-        amounts,
-        pos,
-    ]);
-
-    useEffect(() => {
-        if (autoSlide) {
-            const id = setInterval(next, autoSlide);
-            return () => clearInterval(id);
-        }
-    }, [autoSlide, next]);
+    const autoSlider = useAutoSlide(next, autoSlide);
+    const slides = useSlides(children, amount, pos);
 
     return (
         <div className="staged-outer" ref={ref}>
@@ -47,17 +31,14 @@ export const Staged: React.FC<StagedProps> = ({ children, amount = 1, hideArrows
                     {slides}
                 </div>
             ) : (
-                <div
-                    className="staged"
-                    ref={stagedRef}
-                    onMouseDown={onEnter}
-                    onTouchStart={onEnter}
-                    onTouchMove={onMove}
-                    onMouseMove={onMove}
-                    onTouchEnd={onLeave}
-                    onMouseUp={onLeave}>
-                    {slides}
-                </div>
+                <StagedDraggable
+                    outerRef={ref}
+                    forwardRef={stagedRef}
+                    prev={prev}
+                    next={next}
+                    slides={slides}
+                    autoSlider={autoSlider}
+                />
             )}
             {hideArrows || <div className="staged-right-nav" onClick={next} />}
         </div>

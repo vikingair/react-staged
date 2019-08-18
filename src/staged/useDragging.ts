@@ -1,6 +1,7 @@
 import { CssVars, StagedRef } from './css-vars';
 import { MouseEvent, TouchEvent, useCallback, useRef } from 'react';
 import { useStopDragClick } from './useStopDragClick';
+import { AutoSlider } from './useAutoSlide';
 
 const DRAG_INTENT_RATE = 0.1; // in [0, 1]
 
@@ -14,15 +15,20 @@ export const useDragging = (
     ref: StagedRef,
     stagedRef: StagedRef,
     prev: () => void,
-    next: () => void
+    next: () => void,
+    autoSlider: AutoSlider
 ): UseDraggingReturnType => {
     const stopClick = useStopDragClick(stagedRef);
     const lastEnteredX = useRef<number | void>(undefined);
     const draggedX = useRef<number>(0);
 
-    const onEnter = useCallback(e => {
-        lastEnteredX.current = pageX(e);
-    }, []);
+    const onEnter = useCallback(
+        e => {
+            autoSlider.stop();
+            lastEnteredX.current = pageX(e);
+        },
+        [autoSlider]
+    );
 
     const onMove = useCallback(e => {
         const currentX = lastEnteredX.current;
@@ -37,6 +43,8 @@ export const useDragging = (
         const currentX = lastEnteredX.current;
         const totalDraggedX = draggedX.current;
         if (current && currentX !== undefined) {
+            // only inside here we need to perform any actions
+            autoSlider.start();
             lastEnteredX.current = undefined;
             draggedX.current = 0;
             stopClick.current = !!totalDraggedX;
@@ -46,7 +54,7 @@ export const useDragging = (
             }
             CssVars.transition(ref, CssVars.center);
         }
-    }, [next, prev, stopClick]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [next, prev, stopClick, autoSlider]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return [onEnter, onMove, onLeave];
 };

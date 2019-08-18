@@ -1,4 +1,4 @@
-import { MutableRefObject } from 'react';
+import { MutableRefObject, useLayoutEffect } from 'react';
 
 export type StagedRef = MutableRefObject<HTMLDivElement | null>;
 export const ANIMATION_TIME = 0.5; // in seconds
@@ -51,6 +51,12 @@ const transition = (ref: StagedRef, trans: (ref: StagedRef) => void): Promise<vo
             resolve();
         }, 1000 * ANIMATION_TIME);
     });
+};
+
+export const useInitCssVars = (ref: StagedRef, amount: number) => {
+    useLayoutEffect(() => {
+        CssVars.amount(ref, amount);
+    }, [amount]); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
 export const CssVars = { prev, next, center, finish, update, transition, amount };

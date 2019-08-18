@@ -1,6 +1,6 @@
 {
   "name": "react-staged",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Horizontal slider component",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -32,7 +32,7 @@
   },
   "dependencies": {},
   "scripts": {
-    "dist": "rm -rf dist && rollup -c",
+    "dist": "rm -rf dist && rollup -c && mkdir dist/types && cp src/staged/* dist/types/",
     "start": "react-scripts start",
     "docs": "rm -r docs && react-scripts build && rm build/service-worker.js && mv build docs",
     "test": "react-scripts test"

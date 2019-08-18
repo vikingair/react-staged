@@ -3,17 +3,40 @@
 body {
   margin: 0;
   background-color: #393939;
+  color: #d0d0d0
 }
 
 .App {
+  padding: 3em 0;
   position: relative;
 
-  .middle {
-    position: relative;
-    width: 100%;
+  .example-1 img {
+    height: 20vw;
   }
 
-  .bottom {
+  .example-2 {
     padding: 4em;
+
+    input {
+      margin-bottom: 1em;
+    }
+
+    img {
+      height: 50vw;
+    }
   }
+
+  .example-3 img {
+    height: 30vw;
+  }
+}
+
+img.clicked {
+  animation: opacity-click 250ms linear;
+}
+
+@keyframes opacity-click {
+  0% { opacity: 1 }
+  50% { opacity: 0 }
+  100% { opacity: 1 }
 }

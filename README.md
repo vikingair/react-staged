@@ -2,7 +2,7 @@
 
 This is a slider component (carousel, slideshow, you name it).
 It's currently in a very early stage and there will be added
-additional functionalities. Here's the [demo](https://fdc-viktor-luft.github.io/react-staged/).
+additional functionality. Here's the [demo](https://fdc-viktor-luft.github.io/react-staged/).
 
 What's already possible:
 - providing an array of nodes to the `<Staged />` component where
@@ -14,9 +14,9 @@ What's already possible:
 - clicking of the inner slides is possible but automatically 
   prevented when the user is dragging.
 - `TypeScript` support
+- configurable amounts of entries per slide
 
 What's planned:
-- configurable amounts of entries per slide
 - configurable paging amount
 - configurable transition animation (or even disabled)
 - configurable infinity sliding behaviour

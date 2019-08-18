@@ -4,7 +4,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import typescript from 'rollup-plugin-typescript';
 
 export default {
-    input: { index: 'src/Staged.tsx' },
+    input: { index: 'src/staged/index.tsx' },
     plugins: [
         typescript(),
         babel({

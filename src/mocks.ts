@@ -1,4 +1,6 @@
-export const articles = [
+export type Article = { authors: string, title: string, cover: string };
+
+export const articles: Article[] = [
     {
         authors: 'Charlotte Link',
         title: 'Die Suche',
