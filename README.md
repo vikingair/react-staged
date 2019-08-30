@@ -15,11 +15,11 @@ What's already possible:
   prevented when the user is dragging.
 - `TypeScript` support
 - configurable amounts of entries per slide
+- configurable infinity sliding behaviour
+- overridable SCSS variables to adjust paging arrows
+- configurable transition animation (or even disabled)
 
 What's planned:
-- configurable paging amount
-- configurable transition animation (or even disabled)
-- configurable infinity sliding behaviour
 - performance optimization (speaking of bundle size and computational costs)
 - `flow` support
 - better README
@@ -36,4 +36,8 @@ const App = () => (
         </Staged>
     </div>
 );
+```
+Make sure to important the required styles.
+```js
+import 'react-staged/dist/assets/staged.scss';
 ```

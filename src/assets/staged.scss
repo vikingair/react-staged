@@ -1,14 +1,15 @@
+$arrow-color: #000 !default;
+$arrow-stroke-width: 3px !default;
+$arrow-size: 1.5em !default;
+$arrow-bg: #fff !default;
+$arrow-border-radius: 1.5 * $arrow-size !default;
+
 :root {
   --s-trans-dur: 0;
   --s-trans-animation: ease-out;
   --s-transform-x: -33.3333333%;
   --s-amount: 1;
 }
-
-$arrow-color: #000;
-$arrow-stroke-width: 3px;
-$arrow-size: 1.5em;
-$arrow-bg: #fff;
 
 .staged-outer {
   position: relative;
@@ -17,9 +18,9 @@ $arrow-bg: #fff;
   .staged-left-nav, .staged-right-nav {
     cursor: pointer;
     position: absolute;
-    height: 2 * $arrow-size;
-    width: 1.25 * $arrow-size + 1em;
-    top: calc(50% - #{$arrow-size});
+    height: 2.5 * $arrow-size;
+    width: 1.5 * $arrow-size + 1em;
+    top: calc(50% - #{1.25 * $arrow-size});
     z-index: 1;
 
     &:before {
@@ -44,7 +45,7 @@ $arrow-bg: #fff;
   .staged-left-nav {
     left: 0;
     &:before {
-      border-radius: 0 $arrow-size $arrow-size 0;
+      border-radius: 0 $arrow-border-radius $arrow-border-radius 0;
     }
     &:after {
       left: 1em;
@@ -55,7 +56,7 @@ $arrow-bg: #fff;
   .staged-right-nav {
     right: 0;
     &:before {
-      border-radius: $arrow-size 0 0 $arrow-size;
+      border-radius: $arrow-border-radius 0 0 $arrow-border-radius;
     }
     &:after {
       right: 1em;

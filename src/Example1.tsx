@@ -5,9 +5,11 @@ import { Img } from './Img';
 
 export const Example1: React.FC = () => (
     <div className="example-1">
-        <h2>Example 1</h2>
-        <p>{'{ amount: 3 }'}</p>
-        <Staged amount={3}>
+        <div className="description">
+            <h2>Example 1</h2>
+            <p>{'{ amount: 3, infinity: true }'}</p>
+        </div>
+        <Staged amount={3} infinity>
             {articles.map((a, i) => (
                 <Img article={a} key={i} />
             ))}

@@ -1,11 +1,12 @@
 import { MutableRefObject, useLayoutEffect } from 'react';
 
 export type StagedRef = MutableRefObject<HTMLDivElement | null>;
+export type SlideAnimation = typeof CSSStyleDeclaration.prototype.animation;
 export const ANIMATION_TIME = 0.5; // in seconds
 
 enum CssVar {
-    TRANSITION_DURATION = '--s-trans-dur',
-    TRANSITION_ANIMATION = '--s-trans-animation',
+    DURATION = '--s-trans-dur',
+    ANIMATION = '--s-trans-animation',
     TRANSFORM_X = '--s-transform-x',
     AMOUNT = '--s-amount',
 }
@@ -28,7 +29,7 @@ const _setX = ({ current }: StagedRef, value: number = 0, factor: XFactor = XFac
     }
 };
 const _transitionOne = (ref: StagedRef, xFactor: XFactor) => {
-    _set(ref, CssVar.TRANSITION_DURATION, `${ANIMATION_TIME}s`);
+    _set(ref, CssVar.DURATION, `${ANIMATION_TIME}s`);
     _setX(ref, 0, xFactor);
 };
 
@@ -37,9 +38,10 @@ const center = (ref: StagedRef) => _transitionOne(ref, XFactor.CENTER);
 const next = (ref: StagedRef) => _transitionOne(ref, XFactor.RIGHT);
 const update = (ref: StagedRef, value: number) => _setX(ref, value);
 const amount = (ref: StagedRef, value: number) => _set(ref, CssVar.AMOUNT, String(value));
+const animation = (ref: StagedRef, value: SlideAnimation = 'ease-out') => _set(ref, CssVar.ANIMATION, value);
 
 const finish = (ref: StagedRef) => {
-    _set(ref, CssVar.TRANSITION_DURATION, '0');
+    _set(ref, CssVar.DURATION, '0');
     _setX(ref, 0, XFactor.CENTER);
 };
 
@@ -53,10 +55,13 @@ const transition = (ref: StagedRef, trans: (ref: StagedRef) => void): Promise<vo
     });
 };
 
-export const useInitCssVars = (ref: StagedRef, amount: number) => {
+export const useInitCssVars = (ref: StagedRef, amount: number, animation?: SlideAnimation) => {
     useLayoutEffect(() => {
         CssVars.amount(ref, amount);
     }, [amount]); // eslint-disable-line react-hooks/exhaustive-deps
+    useLayoutEffect(() => {
+        CssVars.animation(ref, animation);
+    }, [animation]); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
-export const CssVars = { prev, next, center, finish, update, transition, amount };
+export const CssVars = { prev, next, center, finish, update, transition, amount, animation };

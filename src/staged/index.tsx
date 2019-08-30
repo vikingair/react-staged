@@ -1,7 +1,7 @@
 import React, { ReactNode, useRef } from 'react';
 import { useArrangeAfterResize } from './useArrangeAfterResize';
 import { usePaging } from './usePaging';
-import { useInitCssVars } from './css-vars';
+import { useInitCssVars, SlideAnimation } from './css-vars';
 import { StagedDraggable } from './StagedDraggable';
 import { useAutoSlide } from './useAutoSlide';
 import { useSlides } from './useSlides';
@@ -12,20 +12,32 @@ type StagedProps = {
     hideArrows?: boolean;
     autoSlide?: number;
     noDrag?: boolean;
+    infinity?: boolean;
+    animation?: SlideAnimation;
 };
 
-export const Staged: React.FC<StagedProps> = ({ children, amount = 1, hideArrows, autoSlide, noDrag }) => {
+export const Staged: React.FC<StagedProps> = ({
+    children,
+    amount = 1,
+    hideArrows,
+    autoSlide,
+    noDrag,
+    infinity = !!autoSlide,
+    animation,
+}) => {
     const ref = useRef<HTMLDivElement | null>(null);
     const stagedRef = useRef<HTMLDivElement | null>(null);
     useArrangeAfterResize(ref);
-    useInitCssVars(ref, amount);
-    const [pos, prev, next] = usePaging(ref, children.length, amount);
+    useInitCssVars(ref, amount, animation);
+    const [{ pos, paged }, prev, next] = usePaging(ref, children.length, amount);
     const autoSlider = useAutoSlide(next, autoSlide);
-    const slides = useSlides(children, amount, pos);
+    const slides = useSlides(children, amount, pos, paged);
+    const isLeft: boolean = !infinity && pos === 0;
+    const isRight: boolean = !infinity && pos >= children.length - amount;
 
     return (
         <div className="staged-outer" ref={ref}>
-            {hideArrows || <div className="staged-left-nav" onClick={prev} />}
+            {hideArrows || isLeft || <div className="staged-left-nav" onClick={prev} />}
             {noDrag ? (
                 <div className="staged" ref={stagedRef}>
                     {slides}
@@ -38,9 +50,11 @@ export const Staged: React.FC<StagedProps> = ({ children, amount = 1, hideArrows
                     next={next}
                     slides={slides}
                     autoSlider={autoSlider}
+                    isLeft={isLeft}
+                    isRight={isRight}
                 />
             )}
-            {hideArrows || <div className="staged-right-nav" onClick={next} />}
+            {hideArrows || isRight || <div className="staged-right-nav" onClick={next} />}
         </div>
     );
 };

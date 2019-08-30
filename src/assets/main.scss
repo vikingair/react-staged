@@ -10,12 +10,23 @@ body {
   padding: 3em 0;
   position: relative;
 
-  .example-1 img {
-    height: 20vw;
+  .description {
+    padding: 0 0.5rem;
+  }
+
+  .example-1 {
+    margin-bottom: 2em;
+    img {
+      height: 20vw;
+    }
   }
 
   .example-2 {
-    padding: 4em;
+    margin-bottom: 2em;
+
+    .carousel {
+      padding: 0 4em;
+    }
 
     input {
       margin-bottom: 1em;
@@ -26,8 +37,18 @@ body {
     }
   }
 
-  .example-3 img {
-    height: 30vw;
+  .example-3 {
+    margin-bottom: 2em;
+    img {
+      height: 30vw;
+    }
+  }
+
+  .example-4 {
+    margin-bottom: 2em;
+    img {
+      height: 60vw;
+    }
   }
 }
 

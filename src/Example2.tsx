@@ -16,15 +16,19 @@ export const Example2: React.FC = () => {
 
     return (
         <div className="example-2">
-            <h2>Example 2</h2>
-            <p>{`{ hideArrows: true, autoSlide: ${autoSlide} }`}</p>
-            <label htmlFor="example-2-autoSlide">autoSlide (in ms): </label>
-            <input id="example-2-autoSlide" type="number" value={String(autoSlide || '')} onChange={onChange} />
-            <Staged hideArrows autoSlide={autoSlide}>
-                {differentSort.map((a, i) => (
-                    <Img article={a} key={i} />
-                ))}
-            </Staged>
+            <div className="description">
+                <h2>Example 2</h2>
+                <p>{`{ hideArrows: true, animation: 'ease-in', autoSlide: ${autoSlide} }`}</p>
+                <label htmlFor="example-2-autoSlide">autoSlide (in ms): </label>
+                <input id="example-2-autoSlide" type="number" value={String(autoSlide || '')} onChange={onChange} />
+            </div>
+            <div className="carousel">
+                <Staged hideArrows autoSlide={autoSlide} animation="ease-in">
+                    {differentSort.map((a, i) => (
+                        <Img article={a} key={i} />
+                    ))}
+                </Staged>
+            </div>
         </div>
     );
 };

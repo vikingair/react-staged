@@ -10,6 +10,8 @@ export type StagedDraggableProps = {
     prev: () => void;
     next: () => void;
     autoSlider: AutoSlider;
+    isLeft: boolean;
+    isRight: boolean;
 };
 
 export const StagedDraggable: React.FC<StagedDraggableProps> = ({
@@ -19,8 +21,10 @@ export const StagedDraggable: React.FC<StagedDraggableProps> = ({
     prev,
     next,
     autoSlider,
+    isLeft,
+    isRight,
 }) => {
-    const [onEnter, onMove, onLeave] = useDragging(outerRef, forwardRef, prev, next, autoSlider);
+    const [onEnter, onMove, onLeave] = useDragging(outerRef, forwardRef, prev, next, autoSlider, isLeft, isRight);
 
     return (
         <div

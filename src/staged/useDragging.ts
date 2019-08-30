@@ -16,7 +16,9 @@ export const useDragging = (
     stagedRef: StagedRef,
     prev: () => void,
     next: () => void,
-    autoSlider: AutoSlider
+    autoSlider: AutoSlider,
+    isLeft: boolean,
+    isRight: boolean
 ): UseDraggingReturnType => {
     const stopClick = useStopDragClick(stagedRef);
     const lastEnteredX = useRef<number | void>(undefined);
@@ -30,13 +32,18 @@ export const useDragging = (
         [autoSlider]
     );
 
-    const onMove = useCallback(e => {
-        const currentX = lastEnteredX.current;
-        if (currentX !== undefined) {
-            draggedX.current = pageX(e) - currentX;
-            CssVars.update(ref, draggedX.current);
-        }
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    const onMove = useCallback(
+        e => {
+            const currentX = lastEnteredX.current;
+            if (currentX !== undefined) {
+                draggedX.current = pageX(e) - currentX;
+                if (isLeft && draggedX.current > 0) return;
+                if (isRight && draggedX.current < 0) return;
+                CssVars.update(ref, draggedX.current);
+            }
+        },
+        [isLeft, isRight] // eslint-disable-line react-hooks/exhaustive-deps
+    );
 
     const onLeave = useCallback(() => {
         const { current } = ref;
@@ -50,11 +57,13 @@ export const useDragging = (
             stopClick.current = !!totalDraggedX;
             const wasDragIntent = Math.abs(totalDraggedX) / current.clientWidth > DRAG_INTENT_RATE;
             if (wasDragIntent) {
+                if (isLeft && totalDraggedX > 0) return;
+                if (isRight && totalDraggedX < 0) return;
                 return totalDraggedX < 0 ? next() : prev();
             }
             CssVars.transition(ref, CssVars.center);
         }
-    }, [next, prev, stopClick, autoSlider]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [next, prev, stopClick, autoSlider, isLeft, isRight]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return [onEnter, onMove, onLeave];
 };
