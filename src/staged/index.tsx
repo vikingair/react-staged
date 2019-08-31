@@ -22,18 +22,19 @@ export const Staged: React.FC<StagedProps> = ({
     hideArrows,
     autoSlide,
     noDrag,
-    infinity = !!autoSlide,
+    infinity,
     animation,
 }) => {
+    const infinityMode = infinity || !!autoSlide || children.length % amount !== 0;
     const ref = useRef<HTMLDivElement | null>(null);
     const stagedRef = useRef<HTMLDivElement | null>(null);
     useArrangeAfterResize(ref);
     useInitCssVars(ref, amount, animation);
-    const [{ pos, paged }, prev, next] = usePaging(ref, children.length, amount);
+    const [{ pos, paged }, prev, next] = usePaging(ref, children.length, amount, infinityMode, animation === 'none');
     const autoSlider = useAutoSlide(next, autoSlide);
     const slides = useSlides(children, amount, pos, paged);
-    const isLeft: boolean = !infinity && pos === 0;
-    const isRight: boolean = !infinity && pos >= children.length - amount;
+    const isLeft: boolean = !infinityMode && pos === 0;
+    const isRight: boolean = !infinityMode && pos >= children.length - amount;
 
     return (
         <div className="staged-outer" ref={ref}>

@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo, Fragment } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import { modulo } from './util';
 
 export const useSlides = (children: ReactNode[], amount: number, pos: number, paged: number): ReactNode[] => {
@@ -6,9 +6,9 @@ export const useSlides = (children: ReactNode[], amount: number, pos: number, pa
     return useMemo(
         () =>
             amounts.map(i => (
-                <Fragment key={modulo(paged * amount + i, amount * 3)}>
+                <div className="staged-child" key={modulo(paged * amount + i, amount * 3)}>
                     {children[modulo(pos + i, children.length)]}
-                </Fragment>
+                </div>
             )),
         [children, amounts, pos, amount, paged]
     );

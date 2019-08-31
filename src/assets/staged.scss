@@ -71,8 +71,8 @@ $arrow-border-radius: 1.5 * $arrow-size !default;
   transform: translateX(var(--s-transform-x));
   transition: transform var(--s-trans-dur) var(--s-trans-animation);
 
-  * {
-    vertical-align: middle;
+  .staged-child {
+    vertical-align: top;
     width: calc(33.333333% / var(--s-amount));
     display: inline-block;
   }

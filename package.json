@@ -1,6 +1,6 @@
 {
   "name": "react-staged",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Horizontal slider component",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -49,6 +49,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.0",
+    "react-use": "^11.3.2",
     "rollup": "^1.19.4",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.0.2",
