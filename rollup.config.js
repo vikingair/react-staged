@@ -1,7 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import typescript from 'rollup-plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 
 export default {
     input: { index: 'src/staged/index.tsx' },
@@ -12,8 +10,6 @@ export default {
             exclude: 'node_modules/**',
             presets: [['@babel/preset-env', { modules: false, targets: { node: '8' } }]],
         }),
-        resolve(),
-        commonjs(),
     ],
     external: ['react'],
     output: [
