@@ -1,6 +1,6 @@
 {
   "name": "react-staged",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Horizontal slider component",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -44,19 +44,16 @@
     "@types/react-dom": "16.8.5",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "^3.3.0",
-    "react-use": "^13.13.0",
-    "rollup": "^1.27.14",
+    "react-use": "^13.20.0",
+    "rollup": "^1.29.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-typescript2": "^0.25.3",
     "typescript": "3.5.3"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [

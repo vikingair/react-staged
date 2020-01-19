@@ -41,11 +41,11 @@ import 'react-staged/dist/assets/staged.scss';
 Or directly import it in your own styles.
 ```scss
 // optional override some default variables
-$arrow-color: #000;
-$arrow-stroke-width: 3px;
-$arrow-size: 1.5em;
-$arrow-bg: #fff;
-$arrow-border-radius: 1.5 * $arrow-size;
+$staged-arrow-color: #000;
+$staged-arrow-stroke-width: 3px;
+$staged-arrow-size: 1.5em;
+$staged-arrow-bg: #fff;
+$staged-arrow-border-radius: 1.5 * $staged-arrow-size;
 
 // and afterwards import this single style
 @import '<NODE_MODULES>/react-staged/dist/assets/staged.scss';

@@ -11,7 +11,7 @@ export default {
             presets: [['@babel/preset-env', { modules: false, targets: { node: '8' } }]],
         }),
     ],
-    external: ['react'],
+    external: ['react', 'react-dom'],
     output: [
         {
             dir: 'dist/cjs',

@@ -1,8 +1,8 @@
-$arrow-color: #000 !default;
-$arrow-stroke-width: 3px !default;
-$arrow-size: 1.5em !default;
-$arrow-bg: #fff !default;
-$arrow-border-radius: 1.5 * $arrow-size !default;
+$staged-arrow-color: #000 !default;
+$staged-arrow-stroke-width: 3px !default;
+$staged-arrow-size: 1.5em !default;
+$staged-arrow-bg: #fff !default;
+$staged-arrow-border-radius: 1.5 * $staged-arrow-size !default;
 
 :root {
   --s-trans-dur: 0;
@@ -18,49 +18,49 @@ $arrow-border-radius: 1.5 * $arrow-size !default;
   .staged-left-nav, .staged-right-nav {
     cursor: pointer;
     position: absolute;
-    height: 2.5 * $arrow-size;
-    width: 1.5 * $arrow-size + 1em;
-    top: calc(50% - #{1.25 * $arrow-size});
+    height: 2.5 * $staged-arrow-size;
+    width: 2 * $staged-arrow-size;
+    top: calc(50% - #{1.25 * $staged-arrow-size});
     z-index: 1;
 
     &:before {
       content: '';
       display: block;
       opacity: 0.2;
-      background-color: $arrow-bg;
+      background-color: $staged-arrow-bg;
       width: 100%;
       height: 100%;
     }
     &:after {
-      border-top: $arrow-stroke-width solid $arrow-color;
-      border-radius: $arrow-stroke-width;
+      border-top: $staged-arrow-stroke-width solid $staged-arrow-color;
+      border-radius: $staged-arrow-stroke-width;
       content: '';
       display: block;
-      height: $arrow-size;
-      width: $arrow-size;
-      top: calc(50% - #{$arrow-size / 2} - #{$arrow-stroke-width / 2});
+      height: $staged-arrow-size;
+      width: $staged-arrow-size;
+      top: calc(50% - #{$staged-arrow-size / 2} - #{$staged-arrow-stroke-width / 2});
       position: absolute;
     }
   }
   .staged-left-nav {
     left: 0;
     &:before {
-      border-radius: 0 $arrow-border-radius $arrow-border-radius 0;
+      border-radius: 0 $staged-arrow-border-radius $staged-arrow-border-radius 0;
     }
     &:after {
-      left: 1em;
-      border-left: $arrow-stroke-width solid $arrow-color;
+      left: 0.5 * $staged-arrow-size;
+      border-left: $staged-arrow-stroke-width solid $staged-arrow-color;
       transform: rotate(-45deg);
     }
   }
   .staged-right-nav {
     right: 0;
     &:before {
-      border-radius: $arrow-border-radius 0 0 $arrow-border-radius;
+      border-radius: $staged-arrow-border-radius 0 0 $staged-arrow-border-radius;
     }
     &:after {
-      right: 1em;
-      border-right: $arrow-stroke-width solid $arrow-color;
+      right: 0.5 * $staged-arrow-size;
+      border-right: $staged-arrow-stroke-width solid $staged-arrow-color;
       transform: rotate(45deg);
     }
   }
