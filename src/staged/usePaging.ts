@@ -1,35 +1,30 @@
 import { useCallback, useState, useRef, useEffect } from 'react';
 import { CssVars, StagedRef } from './css-vars';
-import { modulo } from './util';
 
-type UsePagingReturnType = [{ pos: number; paged: number }, () => void, () => void];
+type UsePagingReturnType = [number, () => void, () => void, boolean, boolean];
 
 export const usePaging = (
     ref: StagedRef,
     length: number,
     amount: number,
-    infinityMode: boolean,
     noAnimation: boolean
 ): UsePagingReturnType => {
-    const [state, setState] = useState({ pos: 0, paged: 0 });
+    const [pos, setPos] = useState(0);
+    const isLeft = pos === 0;
+    const limit = Math.max(0, length - amount);
+    const isRight = pos >= limit;
 
     useEffect(() => {
-        if (!infinityMode) {
-            setState(({ pos, paged }) => ({ paged, pos: Math.floor(pos / amount) * amount }));
-        }
-    }, [amount, infinityMode]);
+        if (pos > limit) setPos(limit);
+    }, [amount, pos, limit]);
 
     const page = useCallback(
         (factor: -1 | 1) => {
-            const transition = noAnimation
-                ? Promise.resolve()
-                : CssVars.transition(ref, factor === 1 ? CssVars.next : CssVars.prev);
-            transition.then(() => {
-                setState(({ pos, paged }) => ({ pos: modulo(pos + factor * amount, length), paged: paged + factor }));
-                noAnimation && CssVars.finish(ref);
-            });
+            const nextPos = factor === 1 ? Math.min(limit, pos + amount) : Math.max(0, pos - amount);
+            const eFactor = (factor * Math.abs(nextPos - pos)) / amount;
+            CssVars.transition(ref, eFactor, noAnimation).then(() => setPos(nextPos));
         },
-        [length, amount] // eslint-disable-line react-hooks/exhaustive-deps
+        [noAnimation, amount, length, pos, length, limit] // eslint-disable-line react-hooks/exhaustive-deps
     );
     const pageRef = useRef(page);
     pageRef.current = page;
@@ -37,5 +32,5 @@ export const usePaging = (
     const prev = useCallback(() => pageRef.current(-1), []);
     const next = useCallback(() => pageRef.current(1), []);
 
-    return [state, prev, next];
+    return [pos, prev, next, isLeft, isRight];
 };

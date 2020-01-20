@@ -94,6 +94,21 @@ body {
       color: #222222;
     }
   }
+
+  .example-6 {
+    .huge-num-container {
+      margin: 1em;
+      background-color: #ababab;
+      height: 9em;
+      text-align: center;
+
+      .huge-num {
+        font-size: 10em;
+        color: #222222;
+        opacity: 0.5;
+      }
+    }
+  }
 }
 
 img.clicked {

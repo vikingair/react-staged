@@ -9,9 +9,9 @@ export type StagedDraggableProps = {
     slides: ReactNode[];
     prev: () => void;
     next: () => void;
-    autoSlider: AutoSlider;
-    isLeft: boolean;
-    isRight: boolean;
+    autoSlider?: AutoSlider;
+    isLeft?: boolean;
+    isRight?: boolean;
 };
 
 export const StagedDraggable: React.FC<StagedDraggableProps> = ({

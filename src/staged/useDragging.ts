@@ -1,7 +1,7 @@
 import { CssVars, StagedRef } from './css-vars';
 import { MouseEvent, TouchEvent, useCallback, useRef } from 'react';
 import { useStopDragClick } from './useStopDragClick';
-import { AutoSlider } from './useAutoSlide';
+import { AutoSlider, NoopAutoSlider } from './useAutoSlide';
 
 const DRAG_INTENT_RATE = 0.1; // in [0, 1]
 
@@ -16,9 +16,9 @@ export const useDragging = (
     stagedRef: StagedRef,
     prev: () => void,
     next: () => void,
-    autoSlider: AutoSlider,
-    isLeft: boolean,
-    isRight: boolean
+    autoSlider: AutoSlider = NoopAutoSlider,
+    isLeft?: boolean,
+    isRight?: boolean
 ): UseDraggingReturnType => {
     const stopClick = useStopDragClick(stagedRef);
     const lastEnteredX = useRef<number | void>(undefined);
@@ -61,7 +61,9 @@ export const useDragging = (
                 if (isRight && totalDraggedX < 0) return;
                 return totalDraggedX < 0 ? next() : prev();
             }
-            CssVars.transition(ref, CssVars.center);
+            // we make the back transition always with animation
+            // because dragging itself was kind of an animation
+            CssVars.transition(ref, 0, false);
         }
     }, [next, prev, stopClick, autoSlider, isLeft, isRight]); // eslint-disable-line react-hooks/exhaustive-deps
 

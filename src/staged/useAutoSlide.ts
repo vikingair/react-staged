@@ -1,11 +1,11 @@
 import { useEffect, useMemo } from 'react';
 
 export type AutoSlider = { start: () => void; stop: () => void };
-const noopAutoSlider = { start: () => {}, stop: () => {} };
+export const NoopAutoSlider = { start: () => {}, stop: () => {} };
 const noTimer: NodeJS.Timeout = 0 as any;
 const createAutoSlider = (next: () => void, autoSlide?: number): AutoSlider => {
     let id: NodeJS.Timeout = noTimer;
-    if (!autoSlide) return noopAutoSlider;
+    if (!autoSlide) return NoopAutoSlider;
     else
         return {
             start: () => {

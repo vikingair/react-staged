@@ -5,7 +5,7 @@ $staged-arrow-bg: #fff !default;
 $staged-arrow-border-radius: 1.5 * $staged-arrow-size !default;
 
 :root {
-  --s-trans-dur: 0;
+  --s-trans-dur: 0.5s;
   --s-trans-animation: ease-out;
   --s-transform-x: -33.3333333%;
   --s-amount: 1;

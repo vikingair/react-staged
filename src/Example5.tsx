@@ -23,7 +23,7 @@ export const Example5: React.FC = () => {
                 <h2>Example 5</h2>
                 <p>- You can stage arbitrary React nodes.</p>
                 <p>- Please notice the breakpoint at 650px screen width.</p>
-                <p>{`{ amount: ${amount} }`}</p>
+                <p>{`<Staged amount={${amount}}>`}</p>
             </div>
             <Staged amount={amount}>
                 {articles.map((a, i) => (

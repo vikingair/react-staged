@@ -17,36 +17,36 @@ const _set = ({ current }: StagedRef, name: CssVar, value: string): void => {
     }
 };
 
-enum XFactor {
-    LEFT = 0,
-    CENTER = 1,
-    RIGHT = 2,
-}
+// should be in [0, 2]
+// where 0 means left end, 1 means center and 2 the right end
+type Factor = number;
 
-const _setX = ({ current }: StagedRef, value: number = 0, factor: XFactor = XFactor.CENTER): void => {
+const _setX = ({ current }: StagedRef, value: number = 0, factor: Factor): void => {
     if (current) {
         current.style.setProperty(CssVar.TRANSFORM_X, `${-current.clientWidth * factor + value}px`);
     }
 };
-const _transitionOne = (ref: StagedRef, xFactor: XFactor) => {
+const goTo = (ref: StagedRef, factor: Factor) => {
     _set(ref, CssVar.DURATION, `${ANIMATION_TIME}s`);
-    _setX(ref, 0, xFactor);
+    _setX(ref, 0, factor);
 };
 
-const prev = (ref: StagedRef) => _transitionOne(ref, XFactor.LEFT);
-const center = (ref: StagedRef) => _transitionOne(ref, XFactor.CENTER);
-const next = (ref: StagedRef) => _transitionOne(ref, XFactor.RIGHT);
-const update = (ref: StagedRef, value: number) => _setX(ref, value);
+const update = (ref: StagedRef, value: number) => _setX(ref, value, 1);
 const amount = (ref: StagedRef, value: number) => _set(ref, CssVar.AMOUNT, String(value));
 const animation = (ref: StagedRef, value: SlideAnimation = 'ease-out') => _set(ref, CssVar.ANIMATION, value);
 
 const finish = (ref: StagedRef) => {
     _set(ref, CssVar.DURATION, '0');
-    _setX(ref, 0, XFactor.CENTER);
+    _setX(ref, 0, 1);
 };
 
-const transition = (ref: StagedRef, trans: (ref: StagedRef) => void): Promise<void> => {
-    trans(ref);
+/**
+ * eFactor (effective factor) is between [-1, 1] to page the slider.
+ */
+const transition = (ref: StagedRef, eFactor: number, noAnimation: boolean): Promise<void> => {
+    if (noAnimation) return Promise.resolve(finish(ref));
+
+    CssVars.goTo(ref, eFactor + 1);
     return new Promise(resolve => {
         setTimeout(() => {
             finish(ref);
@@ -64,4 +64,4 @@ export const useInitCssVars = (ref: StagedRef, amount: number, animation?: Slide
     }, [animation]); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
-export const CssVars = { prev, next, center, finish, update, transition, amount, animation };
+export const CssVars = { goTo, finish, update, transition, amount, animation };

@@ -1,21 +1,15 @@
 import React, { ReactNode, useMemo } from 'react';
-import { modulo } from './util';
+import { useSlideAmounts } from './useSlideAmounts';
 
-export const useSlides = (children: ReactNode[], amount: number, pos: number, paged: number): ReactNode[] => {
-    const amounts = useMemo(
-        () =>
-            Array(amount * 3)
-                .fill(undefined)
-                .map((_, i) => i - amount),
-        [amount]
-    );
+export const useSlides = (children: ReactNode[], amount: number, pos: number): ReactNode[] => {
+    const amounts = useSlideAmounts(amount);
     return useMemo(
         () =>
             amounts.map(i => (
-                <div className="staged-child" key={modulo(paged * amount + i, amount * 3)}>
-                    {children[modulo(pos + i, children.length)]}
+                <div className="staged-child" key={pos + i}>
+                    {children[pos + i] || <div />}
                 </div>
             )),
-        [children, amounts, pos, amount, paged]
+        [children, amounts, pos]
     );
 };
