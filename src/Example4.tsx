@@ -11,9 +11,8 @@ export const Example4: React.FC = () => (
             <p>{`<InfinityStaged animation="cubic-bezier(.19,.91,.24,.87)">`}</p>
         </div>
         <InfinityStaged animation="cubic-bezier(.19,.91,.24,.87)">
-            {articles.slice(0, 2).map((a, i) => (
-                <Img article={a} key={i} />
-            ))}
+            <Img article={articles[0]} />
+            <Img article={articles[1]} />
         </InfinityStaged>
     </div>
 );

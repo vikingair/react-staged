@@ -69,6 +69,7 @@ Props              | Type                                           | Default   
 `hideArrows`       | `boolean` (optional)                           | false          | If you want to hide the sliding arrows completely.
 `noDrag`           | `boolean` (optional)                           | false          | You can disable the draggable slider.
 `animation`        | `string` (optional valid CSS animation string) | ease-out       | You can configure the transition animation yourself. Or disable it by setting `animation` to "none".
+`onSwipe`          | `(index: number) => void` (optional)           |                | You can add a listener for the swiping. The listener get's called with the current index whenever swiping finishes.
 
 The `InfinityStaged` component has an additional property to configure the automatic sliding.
 

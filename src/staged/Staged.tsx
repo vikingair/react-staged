@@ -4,6 +4,7 @@ import { usePaging } from './usePaging';
 import { useInitCssVars, SlideAnimation } from './css-vars';
 import { StagedDraggable } from './StagedDraggable';
 import { useSlides } from './useSlides';
+import { useSwipeListener } from './useSwipeListener';
 
 type StagedProps = {
     children: ReactNode[];
@@ -11,14 +12,16 @@ type StagedProps = {
     hideArrows?: boolean;
     noDrag?: boolean;
     animation?: SlideAnimation;
+    onSwipe?: (index: number) => void;
 };
 
-export const Staged: React.FC<StagedProps> = ({ children, amount = 1, hideArrows, noDrag, animation }) => {
+export const Staged: React.FC<StagedProps> = ({ children, amount = 1, hideArrows, noDrag, animation, onSwipe }) => {
     const ref = useRef<HTMLDivElement | null>(null);
     const stagedRef = useRef<HTMLDivElement | null>(null);
     useArrangeAfterResize(ref);
     useInitCssVars(ref, amount, animation);
     const [pos, prev, next, isLeft, isRight] = usePaging(ref, children.length, amount, animation === 'none');
+    useSwipeListener(pos, onSwipe);
     const slides = useSlides(children, amount, pos);
 
     return (
