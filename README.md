@@ -1,6 +1,6 @@
 # react-staged
 
-This is a slider component (carousel, slideshow, you name it). Here's the [demo](https://fdc-viktor-luft.github.io/react-staged/).
+This is a slider component (carousel, slide show, you name it). Here's the [demo](https://fdc-viktor-luft.github.io/react-staged/).
 
 What's already possible:
 - providing an array of nodes to the `<Staged />` or `<InfinityStaged />` components where
@@ -17,10 +17,10 @@ What's already possible:
 - overridable SCSS variables to adjust paging arrows
 - configurable transition animation
 - lazy loading of all "unreachable" children by default
+- subscribing paging listener
 
 What's still planned:
 - performance optimization (speaking of bundle size and computational costs)
-- paging listener 
 - 100% test coverage
 
 # Usage

@@ -1,6 +1,6 @@
 {
   "name": "react-staged",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Horizontal slider component",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
