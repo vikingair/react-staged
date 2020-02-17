@@ -95,7 +95,9 @@ body {
     }
   }
 
-  .example-6 {
+  .example-6,.example-7 {
+    margin-bottom: 1em;
+
     .huge-num-container {
       margin: 1em;
       background-color: #ababab;
@@ -106,6 +108,26 @@ body {
         font-size: 10em;
         color: #222222;
         opacity: 0.5;
+      }
+    }
+  }
+
+  .example-7 {
+    h2 {
+      display: inline-block;
+    }
+    .buttons {
+      display: inline-block;
+
+      button {
+        background-color: #112765;
+        outline: 0;
+        margin-left: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        color: white;
+        border: none;
+        border-radius: 0.25rem;
+        font-size: 1em;
       }
     }
   }

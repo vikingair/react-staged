@@ -18,6 +18,7 @@ What's already possible:
 - configurable transition animation
 - lazy loading of all "unreachable" children by default
 - subscribing paging listener
+- use paging handlers where- and whenever you want
 
 What's still planned:
 - performance optimization (speaking of bundle size and computational costs)
@@ -70,6 +71,7 @@ Props              | Type                                           | Default   
 `noDrag`           | `boolean` (optional)                           | false          | You can disable the draggable slider.
 `animation`        | `string` (optional valid CSS animation string) | ease-out       | You can configure the transition animation yourself. Or disable it by setting `animation` to "none".
 `onSwipe`          | `(index: number) => void` (optional)           |                | You can add a listener for the swiping. The listener get's called with the current index whenever swiping finishes.
+`ref`              | `MutableRefObject<StagedRef>` (optional)       |                | You can access the `prev` and `next` handlers of the slider. Here's an [example](https://github.com/fdc-viktor-luft/react-staged/blob/master/src/Example7.tsx).
 
 The `InfinityStaged` component has an additional property to configure the automatic sliding.
 

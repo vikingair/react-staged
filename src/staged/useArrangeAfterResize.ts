@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { CssVars, StagedRef } from './css-vars';
+import { CssVars, _StagedRef } from './css-vars';
 
-export const useArrangeAfterResize = (ref: StagedRef) => {
+export const useArrangeAfterResize = (ref: _StagedRef) => {
     useEffect(() => {
         const rearrangeAfterResize = () => CssVars.finish(ref);
         window.addEventListener('resize', rearrangeAfterResize);

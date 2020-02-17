@@ -1,4 +1,4 @@
-import { CssVars, StagedRef } from './css-vars';
+import { CssVars, _StagedRef } from './css-vars';
 import { MouseEvent, TouchEvent, useCallback, useRef } from 'react';
 import { useStopDragClick } from './useStopDragClick';
 import { AutoSlider, NoopAutoSlider } from './useAutoSlide';
@@ -12,8 +12,8 @@ type TouchOrMouseCb = (e: TouchOrMouseEvent) => void;
 type UseDraggingReturnType = [TouchOrMouseCb, TouchOrMouseCb, TouchOrMouseCb];
 
 export const useDragging = (
-    ref: StagedRef,
-    stagedRef: StagedRef,
+    ref: _StagedRef,
+    stagedRef: _StagedRef,
     prev: () => void,
     next: () => void,
     autoSlider: AutoSlider = NoopAutoSlider,

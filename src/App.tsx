@@ -5,6 +5,7 @@ import { Example3 } from './Example3';
 import { Example4 } from './Example4';
 import { Example5 } from './Example5';
 import { Example6 } from './Example6';
+import { Example7 } from './Example7';
 
 export const App: React.FC = () => (
     <div className="App">
@@ -14,5 +15,6 @@ export const App: React.FC = () => (
         <Example4 />
         <Example5 />
         <Example6 />
+        <Example7 />
     </div>
 );

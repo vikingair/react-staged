@@ -1,7 +1,7 @@
 import { MutableRefObject, useEffect, useRef } from 'react';
-import { StagedRef } from './css-vars';
+import { _StagedRef } from './css-vars';
 
-export const useStopDragClick = (ref: StagedRef): MutableRefObject<boolean> => {
+export const useStopDragClick = (ref: _StagedRef): MutableRefObject<boolean> => {
     const stopClick = useRef<boolean>(false);
 
     useEffect(() => {

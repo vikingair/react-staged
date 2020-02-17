@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
-import { StagedRef } from './css-vars';
+import { _StagedRef } from './css-vars';
 import { useDragging } from './useDragging';
 import { AutoSlider } from './useAutoSlide';
 
 export type StagedDraggableProps = {
-    outerRef: StagedRef;
-    forwardRef: StagedRef;
+    outerRef: _StagedRef;
+    forwardRef: _StagedRef;
     slides: ReactNode[];
     prev: () => void;
     next: () => void;

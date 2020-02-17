@@ -1,11 +1,11 @@
 import { useCallback, useState, useRef, useEffect } from 'react';
-import { CssVars, StagedRef } from './css-vars';
+import { CssVars, _StagedRef } from './css-vars';
 import { useNopWhilePending } from './useNopWhilePending';
 
 type UsePagingReturnType = [number, () => void, () => void, boolean, boolean];
 
 export const usePaging = (
-    ref: StagedRef,
+    ref: _StagedRef,
     length: number,
     amount: number,
     noAnimation: boolean
