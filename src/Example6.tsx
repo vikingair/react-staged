@@ -15,7 +15,7 @@ export const Example6: React.FC = () => {
                 <p>{`<Staged amount={3} onSwipe={setPos}>`}</p>
             </div>
             <Staged amount={3} onSwipe={setPos}>
-                {nums.map(n => (
+                {nums.map((n) => (
                     <div className="huge-num-container" key={n}>
                         <div className="huge-num">{n}</div>
                     </div>

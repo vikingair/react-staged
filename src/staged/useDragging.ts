@@ -25,7 +25,7 @@ export const useDragging = (
     const draggedX = useRef<number>(0);
 
     const onEnter = useCallback(
-        e => {
+        (e) => {
             autoSlider.stop();
             lastEnteredX.current = pageX(e);
         },
@@ -33,7 +33,7 @@ export const useDragging = (
     );
 
     const onMove = useCallback(
-        e => {
+        (e) => {
             const currentX = lastEnteredX.current;
             if (currentX !== undefined) {
                 draggedX.current = pageX(e) - currentX;

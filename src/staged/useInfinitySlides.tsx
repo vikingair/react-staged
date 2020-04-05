@@ -6,7 +6,7 @@ export const useInfinitySlides = (children: ReactNode[], amount: number, pos: nu
     const amounts = useSlideAmounts(amount);
     return useMemo(
         () =>
-            amounts.map(i => (
+            amounts.map((i) => (
                 <div className="staged-child" key={modulo(paged * amount + i, amount * 3)}>
                     {children[modulo(pos + i, children.length)]}
                 </div>

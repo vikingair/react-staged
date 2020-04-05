@@ -25,7 +25,7 @@ export const Example7: React.FC = () => {
                 <p>{`<Staged amount={3} ref={staged} noDrag hideArrows>`}</p>
             </div>
             <Staged amount={2} ref={staged} noDrag hideArrows>
-                {nums.map(n => (
+                {nums.map((n) => (
                     <div className="huge-num-container" key={n}>
                         <div className="huge-num">{n}</div>
                     </div>

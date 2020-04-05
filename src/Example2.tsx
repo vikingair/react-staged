@@ -9,7 +9,7 @@ differentSort.sort(() => 0.5 - Math.random());
 export const Example2: React.FC = () => {
     const [autoSlide, setAutoSlide] = useState<number | undefined>(5000);
 
-    const onChange = useCallback(e => {
+    const onChange = useCallback((e) => {
         const next = +e.target.value;
         if (!isNaN(next)) setAutoSlide(next || undefined);
     }, []);

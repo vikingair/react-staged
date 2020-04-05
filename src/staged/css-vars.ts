@@ -47,7 +47,7 @@ const transition = (ref: _StagedRef, eFactor: number, noAnimation: boolean): Pro
     if (noAnimation) return Promise.resolve(finish(ref));
 
     CssVars.goTo(ref, eFactor + 1);
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         setTimeout(() => {
             finish(ref);
             resolve();

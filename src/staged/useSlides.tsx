@@ -5,7 +5,7 @@ export const useSlides = (children: ReactNode[], amount: number, pos: number): R
     const amounts = useSlideAmounts(amount);
     return useMemo(
         () =>
-            amounts.map(i => (
+            amounts.map((i) => (
                 <div className="staged-child" key={pos + i}>
                     {children[pos + i] || <div />}
                 </div>
