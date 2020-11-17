@@ -21,7 +21,7 @@ export const useDragging = (
     isRight?: boolean
 ): UseDraggingReturnType => {
     const stopClick = useStopDragClick(stagedRef);
-    const lastEnteredX = useRef<number | void>(undefined);
+    const lastEnteredX = useRef<number | undefined>(undefined);
     const draggedX = useRef<number>(0);
 
     const onEnter = useCallback(

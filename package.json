@@ -1,6 +1,6 @@
 {
   "name": "react-staged",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Horizontal slider component",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -27,7 +27,7 @@
   "author": "Viktor Luft <viktor.luft@freiheit.com> (https://github.com/fdc-viktor-luft)",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": ">= 16.8.0"
   },
   "dependencies": {},
   "scripts": {
@@ -37,22 +37,22 @@
     "test": "react-scripts test"
   },
   "devDependencies": {
-    "@types/jest": "24.0.17",
-    "@types/node": "12.7.1",
-    "@types/react": "16.9.1",
-    "@types/react-dom": "16.8.5",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "node-sass": "^4.13.1",
-    "prettier": "^2.0.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1",
-    "react-use": "^14.0.0",
-    "rollup": "^2.3.3",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-typescript2": "^0.27.0",
-    "typescript": "3.5.3"
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-typescript": "^6.1.0",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.7",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "^4.0.0",
+    "react-use": "^15.3.4",
+    "rollup": "^2.33.2",
+    "sass": "^1.29.0",
+    "typescript": "^4.0.5"
   },
   "browserslist": {
     "production": [
