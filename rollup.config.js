@@ -1,10 +1,10 @@
 import babel from '@rollup/plugin-babel';
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 
-export default {
+const config = {
     input: { index: 'src/staged/index.tsx' },
     plugins: [
-        typescript(),
+        typescript({ tsconfigOverride: { compilerOptions: { jsx: 'react' } } }),
         babel({
             babelHelpers: 'bundled',
             comments: false,
@@ -24,3 +24,5 @@ export default {
         },
     ],
 };
+
+export default config;

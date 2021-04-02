@@ -2,6 +2,7 @@
   "name": "react-staged",
   "version": "0.9.0",
   "description": "Horizontal slider component",
+  "type": "module",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.tsx",
@@ -29,30 +30,32 @@
   "peerDependencies": {
     "react": ">= 16.8.0"
   },
-  "dependencies": {},
   "scripts": {
     "dist": "rm -rf dist && rollup -c && mkdir dist/types && cp src/staged/* dist/types/ && mkdir dist/assets && cp src/assets/staged.scss dist/assets/",
     "start": "react-scripts start",
-    "docs": "rm -r docs && react-scripts build && rm build/service-worker.js && mv build docs",
-    "test": "react-scripts test"
+    "docs:generate": "rm -rf docs && react-scripts build && mv build docs",
+    "eslint": "eslint --ext .ts,.tsx src/",
+    "test": "react-scripts test --watchAll=false",
+    "lint": "tsc && pnpm eslint"
   },
   "devDependencies": {
-    "@rollup/plugin-babel": "^5.2.1",
-    "@rollup/plugin-typescript": "^6.1.0",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.7",
-    "@types/react": "^16.9.56",
-    "@types/react-dom": "^16.9.9",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.1.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "^4.0.0",
-    "react-use": "^15.3.4",
-    "rollup": "^2.33.2",
-    "sass": "^1.29.0",
-    "typescript": "^4.0.5"
+    "@rollup/plugin-babel": "^5.3.0",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^14.14.37",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
+    "react-use": "^17.2.1",
+    "rollup": "^2.44.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "sass": "^1.32.8",
+    "tslib": "^2.1.0",
+    "typescript": "^4.2.3"
   },
   "browserslist": {
     "production": [

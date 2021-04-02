@@ -8,8 +8,8 @@ export const articles: Article[] = [
     },
     {
         authors: 'Helen Fields',
-        title: 'The perfect silence',
-        cover: '/2014/11/27/10/29/forest-547363__340.jpg',
+        title: 'Chichen Itza',
+        cover: '/2015/11/05/23/02/chichen-itza-1025099_1280.jpg',
     },
     {
         authors: 'Carmen Korn',
