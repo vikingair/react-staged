@@ -3,14 +3,18 @@
 
 body {
   margin: 0;
-  background-color: #393939;
+  background-color: hsl(0 0 15%);
   color: #d0d0d0;
   font-family: 'Josefin Sans', sans-serif;
 }
 
 .App {
-  padding-bottom: 1em;
+  background-color: hsl(0 0 22%);
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 1em;
   position: relative;
+  box-shadow: 0 0 0.25em 0.25em hsl(0 0 5%);
 
   img {
     cursor: pointer;
