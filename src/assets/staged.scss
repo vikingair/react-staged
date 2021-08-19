@@ -37,7 +37,7 @@ $staged-arrow-border-radius: 1.5 * $staged-arrow-size !default;
       display: block;
       height: $staged-arrow-size;
       width: $staged-arrow-size;
-      top: calc(50% - #{$staged-arrow-size / 2} - #{$staged-arrow-stroke-width / 2});
+      top: calc(50% - #{$staged-arrow-size} / 2 - #{$staged-arrow-stroke-width} / 2);
       position: absolute;
     }
   }

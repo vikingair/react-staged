@@ -40,22 +40,22 @@
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
-    "@types/jest": "^26.0.23",
-    "@types/node": "^15.12.4",
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.8",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.6.2",
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "^2.3.1",
+    "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3",
     "react-use": "^17.2.4",
-    "rollup": "^2.52.2",
+    "rollup": "^2.56.2",
     "rollup-plugin-typescript2": "^0.30.0",
-    "sass": "1.32.12",
-    "tslib": "^2.3.0",
-    "typescript": "^4.3.4"
+    "sass": "1.38.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.3.5"
   },
   "browserslist": {
     "production": [
