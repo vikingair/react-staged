@@ -7,7 +7,7 @@ import { Img } from './Img';
 const ArticleView: React.FC<{ article: Article }> = ({ article }) => (
     <div className="article">
         <div className="cover">
-            <Img article={article} />
+            <Img data={article} />
         </div>
         <div className="title">{article.title}</div>
         <div className="authors">{article.authors}</div>

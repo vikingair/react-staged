@@ -25,7 +25,7 @@ export const Example2: React.FC = () => {
             <div className="carousel">
                 <InfinityStaged hideArrows autoSlide={autoSlide} animation="ease-in">
                     {differentSort.map((a, i) => (
-                        <Img article={a} key={i} />
+                        <Img data={a} key={i} />
                     ))}
                 </InfinityStaged>
             </div>

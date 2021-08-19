@@ -11,7 +11,7 @@ export const Example1: React.FC = () => (
         </div>
         <InfinityStaged amount={3}>
             {articles.map((a, i) => (
-                <Img article={a} key={i} />
+                <Img data={a} key={i} />
             ))}
         </InfinityStaged>
     </div>

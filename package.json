@@ -1,6 +1,6 @@
 {
   "name": "react-staged",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "Horizontal slider component",
   "type": "module",
   "main": "dist/cjs/index.js",
@@ -32,7 +32,7 @@
   },
   "scripts": {
     "dist": "rm -rf dist && rollup -c && mkdir dist/types && cp src/staged/* dist/types/ && mkdir dist/assets && cp src/assets/staged.scss dist/assets/",
-    "start": "react-scripts start",
+    "start": "PORT=3308 react-scripts start",
     "docs:generate": "rm -rf docs && react-scripts build && mv build docs",
     "eslint": "eslint --ext .ts,.tsx src/",
     "test": "react-scripts test --watchAll=false",

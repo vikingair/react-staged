@@ -20,10 +20,6 @@ What's already possible:
 - subscribing paging listener
 - use paging handlers where- and whenever you want
 
-What's still planned:
-- performance optimization (speaking of bundle size and computational costs)
-- 100% test coverage
-
 # Usage
 ```js
 import { Staged } from 'react-staged';
@@ -69,8 +65,9 @@ Props              | Type                                           | Default   
 `amount`           | `number` (optional natural number > 0)         | 1              | The amount of elements you want to display at a time.
 `hideArrows`       | `boolean` (optional)                           | false          | If you want to hide the sliding arrows completely.
 `noDrag`           | `boolean` (optional)                           | false          | You can disable the draggable slider.
+`className`        | `string` (optional)                            |                | You can add a custom class to the outer staged element.
 `animation`        | `string` (optional valid CSS animation string) | ease-out       | You can configure the transition animation yourself. Or disable it by setting `animation` to "none".
-`onSwipe`          | `(index: number) => void` (optional)           |                | You can add a listener for the swiping. The listener get's called with the current index whenever swiping finishes.
+`onSwipe`          | <code>(event: { pos: number; diff: number; direction: -1 &#124; 1 }) => void</code> (optional)           |    | You can add a listener for the swiping. The listener get's called with the current index whenever swiping finishes.
 `ref`              | `MutableRefObject<StagedRef>` (optional)       |                | You can access the `prev` and `next` handlers of the slider. Here's an [example](https://github.com/fdc-viktor-luft/react-staged/blob/master/src/Example7.tsx).
 
 The `InfinityStaged` component has an additional property to configure the automatic sliding.

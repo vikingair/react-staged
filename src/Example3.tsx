@@ -12,7 +12,7 @@ export const Example3: React.FC = () => (
         </div>
         <Staged amount={2} noDrag animation="none">
             {articles.slice(0, 6).map((a, i) => (
-                <Img article={a} key={i} />
+                <Img data={a} key={i} />
             ))}
         </Staged>
     </div>

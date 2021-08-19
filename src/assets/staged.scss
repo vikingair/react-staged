@@ -4,14 +4,13 @@ $staged-arrow-size: 1.5em !default;
 $staged-arrow-bg: #fff !default;
 $staged-arrow-border-radius: 1.5 * $staged-arrow-size !default;
 
-:root {
+.staged-outer {
   --s-trans-dur: 0;
   --s-trans-animation: ease-out;
-  --s-transform-x: -33.3333333%;
+  --s-width: 0;
+  --s-transform-x: 0;
   --s-amount: 1;
-}
 
-.staged-outer {
   position: relative;
   overflow-x: hidden;
 
@@ -68,7 +67,7 @@ $staged-arrow-border-radius: 1.5 * $staged-arrow-size !default;
 
 .staged {
   width: 300%;
-  transform: translateX(var(--s-transform-x));
+  transform: translateX(calc(var(--s-transform-x) * 1px));
   transition: transform var(--s-trans-dur) var(--s-trans-animation);
 
   .staged-child {

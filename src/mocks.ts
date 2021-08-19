@@ -1,4 +1,5 @@
-export type Article = { authors: string; title: string; cover: string };
+export type ImgData = { title: string; cover: string };
+export type Article = ImgData & { authors: string };
 
 export const articles: Article[] = [
     {

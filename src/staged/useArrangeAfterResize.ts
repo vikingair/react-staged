@@ -3,8 +3,8 @@ import { CssVars, _StagedRef } from './css-vars';
 
 export const useArrangeAfterResize = (ref: _StagedRef) => {
     useEffect(() => {
-        const rearrangeAfterResize = () => CssVars.finish(ref);
-        window.addEventListener('resize', rearrangeAfterResize);
-        return () => window.removeEventListener('resize', rearrangeAfterResize);
+        const rearrangeAfterResize = new ResizeObserver(() => CssVars.finish(ref));
+        rearrangeAfterResize.observe(ref.current!);
+        return rearrangeAfterResize.disconnect;
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };

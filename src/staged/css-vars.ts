@@ -7,6 +7,7 @@ export const ANIMATION_TIME = 0.5; // in seconds
 enum CssVar {
     DURATION = '--s-trans-dur',
     ANIMATION = '--s-trans-animation',
+    WIDTH = '--s-width', // can be used by other clients to build fancy additional animations
     TRANSFORM_X = '--s-transform-x',
     AMOUNT = '--s-amount',
 }
@@ -23,7 +24,8 @@ type Factor = number;
 
 const _setX = ({ current }: _StagedRef, value: number = 0, factor: Factor): void => {
     if (current) {
-        current.style.setProperty(CssVar.TRANSFORM_X, `${-current.clientWidth * factor + value}px`);
+        current.style.setProperty(CssVar.WIDTH, `${current.clientWidth}`);
+        current.style.setProperty(CssVar.TRANSFORM_X, `${-current.clientWidth * factor + value}`);
     }
 };
 const goTo = (ref: _StagedRef, factor: Factor) => {
@@ -56,6 +58,7 @@ const transition = (ref: _StagedRef, eFactor: number, noAnimation: boolean): Pro
 };
 
 export const useInitCssVars = (ref: _StagedRef, amount: number, animation?: SlideAnimation) => {
+    // useLayoutEffect(() => finish(ref), []); // eslint-disable-line react-hooks/exhaustive-deps
     useLayoutEffect(() => {
         CssVars.amount(ref, amount);
     }, [amount]); // eslint-disable-line react-hooks/exhaustive-deps
