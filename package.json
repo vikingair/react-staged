@@ -1,6 +1,6 @@
 {
   "name": "react-staged",
-  "version": "0.10.1-beta.2",
+  "version": "0.10.1-beta.3",
   "description": "Horizontal slider component",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -34,7 +34,7 @@
     "dist:esm": "babel src/staged --extensions \".ts,.tsx\" --out-dir dist/esm",
     "dist:assets": "mkdir dist/assets && cp src/assets/staged.scss dist/assets/",
     "dist:types": "mkdir dist/types && cp src/staged/* dist/types/",
-    "dist": "rm -rf dist pnpm dist:cjs && pnpm dist:esm && pnpm dist:assets && pnpm dist:types",
+    "dist": "rm -rf dist && pnpm dist:cjs && pnpm dist:esm && pnpm dist:assets && pnpm dist:types",
     "start": "PORT=3308 react-scripts start",
     "docs:generate": "rm -rf docs && react-scripts build && mv build docs",
     "eslint": "eslint --ext .ts,.tsx src/",
