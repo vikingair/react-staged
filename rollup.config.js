@@ -1,15 +1,26 @@
+import nodeResolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
-import typescript from 'rollup-plugin-typescript2';
+
+const extensions = ['.ts', '.tsx'];
 
 const config = {
     input: { index: 'src/staged/index.tsx' },
     plugins: [
-        typescript({ tsconfigOverride: { compilerOptions: { jsx: 'react' } } }),
+        nodeResolve({
+            extensions,
+        }),
+        // typescript({ tsconfigOverride: { compilerOptions: { jsx: 'react' } } }),
         babel({
+            extensions,
+            include: 'src/**/*',
+            exclude: '**/node_modules/**',
             babelHelpers: 'bundled',
             comments: false,
-            exclude: 'node_modules/**',
-            presets: [['@babel/preset-env', { modules: false, targets: { node: '12' } }]],
+            presets: [
+                ['@babel/preset-env', { modules: false, bugfixes: true, loose: true, targets: { esmodules: true } }],
+                '@babel/preset-typescript',
+                '@babel/preset-react',
+            ],
         }),
     ],
     external: ['react', 'react-dom'],
