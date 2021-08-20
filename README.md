@@ -84,3 +84,18 @@ It will place your first slide to the end of the last slide and vice versa.
 The slider will render only the "reachable" children. Let's say your slide has a configured paging amount of 2.
 This means the infinity slider will render child n - 1, n, 1, 2, 3 and 4, where only 1 and 2 are the only visible slides.
 If you want to make sure that your images get lazy loaded, you should consider to add `loading="lazy"` to your images.
+
+### Tests
+This library uses internally the `ResizeObserver` which isn't supported on older browsers like the
+IE11. Furthermore, as the time of writing `jest-dom` doesn't provide a mock for this. So if you're
+testing and not mocking this library, you should include a valid mock for this. E.g.
+by inserting this into your `setupTests.ts` file:
+```ts
+class ResizeObserverMock {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+}
+(global as any).ResizeObserver = ResizeObserverMock;
+```
+
