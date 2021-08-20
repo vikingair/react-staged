@@ -1,6 +1,6 @@
 {
   "name": "react-staged",
-  "version": "0.10.1-beta.1",
+  "version": "0.10.1-beta.2",
   "description": "Horizontal slider component",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -30,9 +30,11 @@
     "react": ">= 16.8.0"
   },
   "scripts": {
-    "dist:cjs": "rm -rf dist/cjs && BABEL_ENV=commonjs babel src/staged --extensions \".ts,.tsx\" --out-dir dist/cjs",
-    "dist:esm": "rm -rf dist/esm && babel src/staged --extensions \".ts,.tsx\" --out-dir dist/esm",
-    "dist": "pnpm dist:cjs && pnpm dist:esm && && cp src/staged/* dist/types/ && mkdir dist/assets && cp src/assets/staged.scss dist/assets/",
+    "dist:cjs": "BABEL_ENV=commonjs babel src/staged --extensions \".ts,.tsx\" --out-dir dist/cjs",
+    "dist:esm": "babel src/staged --extensions \".ts,.tsx\" --out-dir dist/esm",
+    "dist:assets": "mkdir dist/assets && cp src/assets/staged.scss dist/assets/",
+    "dist:types": "mkdir dist/types && cp src/staged/* dist/types/",
+    "dist": "rm -rf dist pnpm dist:cjs && pnpm dist:esm && pnpm dist:assets && pnpm dist:types",
     "start": "PORT=3308 react-scripts start",
     "docs:generate": "rm -rf docs && react-scripts build && mv build docs",
     "eslint": "eslint --ext .ts,.tsx src/",
